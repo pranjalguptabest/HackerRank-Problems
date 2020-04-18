@@ -1,0 +1,67 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the superDigit function below.
+    static int superDigit(String n, int k) {
+ 
+    long a= Integer.parseInt(n);
+    long num=0;
+    while (a != 0)
+        {
+            num = num + a % 10;
+            a = a/10;
+        }
+    long number=num*k;
+    long sum = 0;
+    while(number>10)
+    {
+        while (number != 0)
+        {
+            sum = sum + number % 10;
+            number = number/10;
+        }
+    }
+    long temp=0;
+    if(sum>10)
+    {
+        while(sum>10)
+        {
+            while (sum != 0)
+            {
+                temp = temp + sum % 10;
+                sum = sum/10;
+            }
+        }
+        sum=temp;
+    }
+    return (int)sum;
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String[] nk = scanner.nextLine().split(" ");
+
+        String n = nk[0];
+
+        int k = Integer.parseInt(nk[1]);
+
+        int result = superDigit(n, k);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
