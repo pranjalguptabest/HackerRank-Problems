@@ -1,0 +1,10 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Third {
+   public static void main(String[] args) {
+     List<Integer> a = Arrays.asList(10,15,19,52,0,98);
+     a.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
+   }
+
+}
